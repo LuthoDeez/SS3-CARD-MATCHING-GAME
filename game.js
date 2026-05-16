@@ -605,4 +605,4 @@ function addLog(text) {
 
 let bestScore = getCookie("bestScore") || 0;
 document.getElementById("displayBestScore").innerText = bestScore;
-setMessage("Welcome, " + (playerName || "Player") + "! Click Start Game when ready.");
+setMessage("Welcome, " + (playerName || "Player") + "Click Start Game when ready.");
