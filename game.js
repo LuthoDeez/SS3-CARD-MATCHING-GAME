@@ -6,13 +6,14 @@ let pairType = localStorage.getItem("pairType");
 let enableHints = localStorage.getItem("enableHints") === "true";
 let showTimerSetting = localStorage.getItem("showTimer") === "true";
 
-
+//Change 2
 // improvements
 let difficultySettings = {
     easy:   { startTime: 90, flipBackDelay: 800, pointsPerMatch: 10 },
     medium: { startTime: 75, flipBackDelay: 800,  pointsPerMatch: 15 },
     hard:   { startTime: 60,  flipBackDelay: 400,  pointsPerMatch: 25 }
 };
+//end change 2
 // improvements
 
 let settings = difficultySettings[difficulty] || difficultySettings["medium"];
@@ -296,7 +297,7 @@ function startTimer() {
     timerInterval = setInterval(function () {
         timeLeft--;
         document.getElementById("displayTime").innerText = timeLeft + "s";
-
+        //change 1
         // improvements
         if (timeLeft <= 20) {
             document.getElementById("displayTime").style.color = "red";
@@ -305,7 +306,7 @@ function startTimer() {
             document.getElementById("displayTime").parentElement.style.border = "2px solid red";
         }
         // improvements
-
+        //end change 1
         if (timeLeft <= 0) {
             endGame();
         }
