@@ -7,11 +7,13 @@ let enableHints = localStorage.getItem("enableHints") === "true";
 let showTimerSetting = localStorage.getItem("showTimer") === "true";
 
 
+// improvements
 let difficultySettings = {
-    easy:   { startTime: 90,  flipBackDelay: 1200, pointsPerMatch: 10 },
-    medium: { startTime: 60,  flipBackDelay: 800,  pointsPerMatch: 15 },
-    hard:   { startTime: 40,  flipBackDelay: 400,  pointsPerMatch: 25 }
+    easy:   { startTime: 90, flipBackDelay: 800, pointsPerMatch: 10 },
+    medium: { startTime: 75, flipBackDelay: 800,  pointsPerMatch: 15 },
+    hard:   { startTime: 60,  flipBackDelay: 400,  pointsPerMatch: 25 }
 };
+// improvements
 
 let settings = difficultySettings[difficulty] || difficultySettings["medium"];
 
@@ -295,9 +297,14 @@ function startTimer() {
         timeLeft--;
         document.getElementById("displayTime").innerText = timeLeft + "s";
 
-        if (timeLeft <= 10) {
+        // improvements
+        if (timeLeft <= 20) {
             document.getElementById("displayTime").style.color = "red";
+            document.getElementById("displayTime").style.fontSize = "1.4rem";
+            document.getElementById("displayTime").parentElement.style.background = "#fee2e2";
+            document.getElementById("displayTime").parentElement.style.border = "2px solid red";
         }
+        // improvements
 
         if (timeLeft <= 0) {
             endGame();
@@ -463,6 +470,11 @@ function resetGame() {
     gameBoard.className = "game-board";
 
     document.getElementById("displayTime").style.color = "";
+    // improvements
+    document.getElementById("displayTime").style.fontSize = "";
+    document.getElementById("displayTime").parentElement.style.background = "";
+    document.getElementById("displayTime").parentElement.style.border = "";
+    // improvements
     document.getElementById("logArea").innerHTML = "";
 
     updateDisplay();
@@ -605,4 +617,4 @@ function addLog(text) {
 
 let bestScore = getCookie("bestScore") || 0;
 document.getElementById("displayBestScore").innerText = bestScore;
-setMessage("Welcome, " + (playerName || "Player") + "Click Start Game when ready.");
+setMessage("Welcome, " + (playerName || "Player") + "! Click Start Game when ready.");
